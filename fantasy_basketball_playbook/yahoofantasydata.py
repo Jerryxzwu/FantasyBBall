@@ -35,8 +35,8 @@ class YahooFantasyData:
 	def get_simple_roster(self,team):
 		def isInjured(player):
 			return 'IL' in player['eligible_positions']
+		abbr_change = {'GS':'GSW','NO':'NOP','NY':'NYK','SA':'SAS'}
 		def teamAbbrConverter(abbr):
-			abbr_change = {'GS':'GSW','NO':'NOP','NY':'NYK','SA':'SAS'}
 			if abbr in abbr_change:
 				abbr = abbr_change[abbr]
 			return abbr
