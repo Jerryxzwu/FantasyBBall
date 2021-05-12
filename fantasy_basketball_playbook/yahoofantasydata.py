@@ -2,6 +2,7 @@ from yahoo_oauth import OAuth2
 
 import yahoo_fantasy_api as yfa
 
+from unidecode import unidecode
 
 class YahooFantasyData:
 
@@ -41,7 +42,7 @@ class YahooFantasyData:
 				abbr = abbr_change[abbr]
 			return abbr
 		yahoo_roster = self.get_yahoo_roster(team)
-		name_roster = [player['name'] for player in yahoo_roster if not isInjured(player)]
+		name_roster = [unidecode(player['name']) for player in yahoo_roster if not isInjured(player)]
 		name_nba_team_roster = []
 		for name in name_roster:
 			nba_team = self.lg.player_details(name)[0]['editorial_team_abbr'].upper()
